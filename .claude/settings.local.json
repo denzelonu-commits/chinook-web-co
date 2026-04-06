@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"web design agency premium dark modern Calgary local business\" --design-system -p \"Chinook Web Co\" -f markdown)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"glassmorphism dark premium agency\" --domain style -n 3)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"agency portfolio landing page\" --domain landing -n 3)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Read(//usr/local/bin/**)",
+      "Bash(command -v node)",
+      "Bash(command -v python3)",
+      "Read(//opt/homebrew/lib/node_modules/npm/bin/**)",
+      "Bash(/opt/homebrew/bin/npx --version)",
+      "Bash(/opt/homebrew/bin/node --version)"
+    ]
+  }
+}

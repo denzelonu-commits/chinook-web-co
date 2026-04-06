@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chinook Web Co. — Professional websites for Calgary's local businesses. Custom design, hosting included, completely hands-off for you." />
+  <title>Chinook Web Co. | Calgary Web Design Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:      #060608;
+      --bg-base:      #0a0a0f;
+      --bg-elevated:  #111118;
+      --bg-card:      rgba(255, 255, 255, 0.03);
+      --bg-card-hover:rgba(255, 255, 255, 0.055);
+      --surface:      rgba(255, 255, 255, 0.05);
+      --border:       rgba(255, 255, 255, 0.08);
+      --border-strong:rgba(255, 255, 255, 0.14);
+
+      --text-primary: #f0f2f8;
+      --text-secondary:#9aa3b4;
+      --text-muted:   #5a6375;
+
+      --accent:       #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-dim:   rgba(59, 130, 246, 0.15);
+      --accent-glow:  rgba(59, 130, 246, 0.35);
+
+      --radius-sm:    8px;
+      --radius-md:    14px;
+      --radius-lg:    20px;
+      --radius-xl:    28px;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+
+      --nav-h: 72px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent-dim);
+      color: var(--accent-light);
+    }
+
+    /* ─── SCROLLBAR ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.5); }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 200ms var(--ease-out-expo);
+      text-decoration: none;
+      border: none;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 24px rgba(59,130,246,0.3), 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 0 36px rgba(59,130,246,0.45), 0 6px 20px rgba(0,0,0,0.3);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+    .btn-outline:hover {
+      background: var(--surface);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-outline:active { transform: translateY(0) scale(0.98); }
+
+    .btn-sm {
+      padding: 9px 18px;
+      font-size: 0.82rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-lg {
+      padding: 16px 34px;
+      font-size: 1rem;
+      border-radius: var(--radius-md);
+    }
+
+    /* ─── GLASS CARD ─────────────────────────────────────────── */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 250ms var(--ease-out-expo),
+                  border-color 250ms var(--ease-out-expo),
+                  transform 300ms var(--ease-out-expo),
+                  box-shadow 300ms var(--ease-out-expo);
+    }
+    .glass-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.08);
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 700ms var(--ease-out-expo),
+                  transform 700ms var(--ease-out-expo);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+    .reveal-delay-5 { transition-delay: 500ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background 300ms var(--ease-out-expo),
+                  backdrop-filter 300ms,
+                  border-color 300ms,
+                  box-shadow 300ms;
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(6, 6, 8, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom-color: var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(59,130,246,0.4);
+    }
+    .nav-logo-mark svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .nav-logo-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-text span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: color 200ms, background 200ms;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background: var(--surface);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      transition: background 200ms;
+    }
+    .nav-hamburger:hover { background: var(--surface); }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 1px;
+      transition: transform 300ms var(--ease-out-expo), opacity 200ms;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: rgba(6,6,8,0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px 28px;
+      z-index: 999;
+      transform: translateY(-12px);
+      opacity: 0;
+      transition: transform 300ms var(--ease-out-expo), opacity 300ms;
+    }
+    .nav-mobile-menu.open {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .nav-mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 200ms;
+    }
+    .nav-mobile-menu a:last-of-type { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--text-primary); }
+    .nav-mobile-cta { margin-top: 20px; width: 100%; text-align: center; }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      overflow: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Gradient mesh overlays */
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-gradient::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(59,130,246,0.12) 0%, transparent 65%);
+      animation: blobA 12s ease-in-out infinite alternate;
+    }
+    .hero-gradient::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -5%;
+      width: 55%;
+      height: 65%;
+      background: radial-gradient(ellipse at center, rgba(29,78,216,0.09) 0%, transparent 65%);
+      animation: blobB 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes blobA {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5%, 8%) scale(1.1); }
+    }
+    @keyframes blobB {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-6%, -5%) scale(1.08); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 80px 0 60px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 8px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-headline {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+    .hero-headline .accent-text {
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, #1d4ed8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: border-color 200ms, color 200ms;
+    }
+    .trust-badge:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .trust-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--border-strong));
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 0.9; transform: scaleY(1.1); }
+    }
+    .hero-scroll-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION SHARED
+    ═══════════════════════════════════════════════════════════ */
+    section {
+      padding: 100px 0;
+    }
+    section:nth-child(even) {
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 50%, var(--bg-base) 100%);
+    }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+    .section-header.centered {
+      text-align: center;
+    }
+    .section-header.centered .section-subtitle {
+      margin: 0 auto;
+    }
+    .section-header.centered .section-label {
+      justify-content: center;
+    }
+    .section-header.centered .section-label::before { display: none; }
+    .section-header.centered .section-label::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════════════════════ */
+    #services { background: var(--bg-deep); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(59,130,246,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: box-shadow 300ms;
+    }
+    .service-card:hover .service-icon {
+      box-shadow: 0 0 20px rgba(59,130,246,0.25);
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════════════════════ */
+    #how-it-works {}
+
+    .steps-wrapper {
+      position: relative;
+    }
+
+    /* Desktop connecting line */
+    .steps-line {
+      display: none;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      position: relative;
+    }
+
+    /* Horizontal connector for desktop */
+    @media (min-width: 900px) {
+      .steps-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .steps-line {
+        display: block;
+        position: absolute;
+        top: 38px;
+        left: calc(33.33% - 12px);
+        right: calc(33.33% - 12px);
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), var(--accent), transparent);
+        opacity: 0.25;
+        z-index: 0;
+      }
+    }
+
+    .step-card {
+      padding: 36px 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 2px solid var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 24px;
+      position: relative;
+      transition: border-color 300ms, box-shadow 300ms;
+    }
+    .step-card:hover .step-number {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(59,130,246,0.3);
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRICING
+    ═══════════════════════════════════════════════════════════ */
+    #pricing { background: var(--bg-deep); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      padding: 40px 36px;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(59,130,246,0.35);
+      box-shadow: 0 0 60px rgba(59,130,246,0.12), 0 0 0 1px rgba(59,130,246,0.15);
+    }
+    .pricing-card.featured::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .pricing-plan {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .pricing-price {
+      margin-bottom: 8px;
+    }
+    .pricing-price-amount {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .pricing-price-period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+    .pricing-price-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .pricing-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      padding: 7px 0;
+    }
+    .pricing-features li svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       STATS
+    ═══════════════════════════════════════════════════════════ */
+    #stats {}
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .stat-card {
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+    .stat-card:hover::after { opacity: 1; }
+
+    .stat-number {
+      font-size: clamp(2.8rem, 5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .stat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .stat-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: rgba(59,130,246,0.4);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════════════════════ */
+    #contact { background: var(--bg-deep); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    .contact-info-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .contact-info-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: border-color 200ms;
+    }
+    .contact-detail:hover { border-color: var(--border-strong); }
+    .contact-detail-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-dim);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-detail-body {}
+    .contact-detail-label {
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .contact-detail-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .contact-detail-value a {
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .contact-detail-value a:hover { color: var(--text-primary); }
+
+    /* Contact Form */
+    .contact-form-card {
+      padding: 36px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group:last-of-type { margin-bottom: 0; }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+    .form-label .req {
+      color: var(--accent);
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 200ms, box-shadow 200ms, background 200ms;
+      appearance: none;
+      -webkit-appearance: none;
+      min-height: 44px;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--text-muted); }
+    .form-input:hover, .form-select:hover, .form-textarea:hover {
+      border-color: var(--border-strong);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+      background: rgba(59,130,246,0.04);
+    }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%235a6375' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-select option {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.6;
+    }
+
+    .form-submit-row {
+      margin-top: 24px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit .btn-text { transition: opacity 200ms; }
+    .btn-submit.loading .btn-text { opacity: 0; }
+    .btn-submit .btn-spinner {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-submit.loading .btn-spinner { display: flex; }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 600ms linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .form-success-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #22c55e;
+      fill: none;
+      stroke-width: 2.5;
+    }
+    .form-success h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .form-success p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    #footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+    .footer-brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .footer-brand-name span { color: var(--accent); }
+
+    .footer-tagline {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 320px;
+      margin-bottom: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social-link {
+      width: 36px;
+      height: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 200ms, border-color 200ms;
+    }
+    .footer-social-link:hover {
+      background: var(--accent-dim);
+      border-color: rgba(59,130,246,0.3);
+    }
+    .footer-social-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-secondary);
+      fill: none;
+      stroke-width: 1.75;
+    }
+    .footer-social-link:hover svg { stroke: var(--accent-light); }
+
+    .footer-col-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .footer-contact-list svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .footer-contact-list a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .footer-contact-list a:hover { color: var(--accent-light); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .footer-bottom-heart {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .footer-bottom-heart span { color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE OVERRIDES
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      section { padding: 72px 0; }
+      .section-header { margin-bottom: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 64px 0; }
+      .services-grid, .steps-grid, .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .trust-badges { gap: 8px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════════ -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#" class="nav-logo" aria-label="Chinook Web Co. Home">
+          <div class="nav-logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <polyline points="4 17 10 11 4 5"></polyline>
+              <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+          </div>
+          <span class="nav-logo-text">Chinook <span>Web Co.</span></span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <ul class="nav-links" role="list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn-primary btn-sm">Get Your Free Demo</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile-menu" id="nav-mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#services" class="nav-mobile-link">Services</a>
+    <a href="#how-it-works" class="nav-mobile-link">How It Works</a>
+    <a href="#pricing" class="nav-mobile-link">Pricing</a>
+    <a href="#contact" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-cta">
+      <a href="#contact" class="btn btn-primary" style="width:100%">Get Your Free Demo</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Hero">
+    <!-- Particle canvas -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <!-- Gradient blobs -->
+    <div class="hero-gradient" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <!-- Eyebrow -->
+        <div class="hero-eyebrow reveal">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          Calgary, Alberta — Est. 2024
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-headline reveal reveal-delay-1">
+          Calgary's Local Businesses<br>
+          Deserve a <span class="accent-text">Professional<br>Online Presence</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="hero-subheadline reveal reveal-delay-2">
+          We build custom websites for local Calgary businesses — fast, affordable,
+          and completely hands-off for you. We even build your demo before we reach out.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            See Your Free Demo
+          </a>
+          <a href="#services" class="btn btn-outline btn-lg">View Our Services</a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-badges reveal reveal-delay-4" role="list" aria-label="Key features">
+          <div class="trust-badge" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calgary Based
+          </div>
+          <div class="trust-badge" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            Mobile Responsive
+          </div>
+          <div class="trust-badge" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            Hosting Included
+          </div>
+          <div class="trust-badge" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            No Tech Skills Needed
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════════════════ -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">What We Do</div>
+        <h2 class="section-title reveal reveal-delay-1" id="services-title">Everything You Need<br>to Get Online</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          From initial design to ongoing maintenance — we handle every part of your web presence so you can focus on running your business.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <article class="glass-card service-card reveal">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3 class="service-title">Custom Website Design</h3>
+          <p class="service-desc">We build clean, modern, mobile-responsive websites tailored specifically to your business — designed to attract customers and build credibility from the very first visit.</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="glass-card service-card reveal reveal-delay-1">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="service-title">Hosting &amp; Maintenance</h3>
+          <p class="service-desc">We handle everything after launch — hosting, security updates, software patches, and ongoing maintenance. You focus on your business, we handle the rest.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="glass-card service-card reveal reveal-delay-2">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="service-title">Local Calgary Focus</h3>
+          <p class="service-desc">We specialise in Calgary's local businesses — restaurants, trades, salons, auto shops, and more. We know your market, your customers, and what works here.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════════════════════════ -->
+  <section id="how-it-works" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Process</div>
+        <h2 class="section-title reveal reveal-delay-1" id="how-title">How It Works</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          No complicated onboarding. No upfront commitment. We do the work first, then show you what your business can look like online.
+        </p>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-line" aria-hidden="true"></div>
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <article class="glass-card step-card reveal">
+            <div class="step-number" aria-label="Step 1">1</div>
+            <h3 class="step-title">We Find You</h3>
+            <p class="step-desc">We identify local Calgary businesses that could benefit from a professional online presence and build a custom demo site for you — before we even reach out.</p>
+          </article>
+
+          <!-- Step 2 -->
+          <article class="glass-card step-card reveal reveal-delay-1">
+            <div class="step-number" aria-label="Step 2">2</div>
+            <h3 class="step-title">We Show You</h3>
+            <p class="step-desc">We present your demo site on a quick video call. You see exactly what your website looks like before committing to anything. No pressure, just possibilities.</p>
+          </article>
+
+          <!-- Step 3 -->
+          <article class="glass-card step-card reveal reveal-delay-2">
+            <div class="step-number" aria-label="Step 3">3</div>
+            <h3 class="step-title">You Go Live</h3>
+            <p class="step-desc">If you love it, we make it yours. We handle the domain, hosting, and launch — you're online and attracting customers within days, not months.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PRICING
+  ═══════════════════════════════════════════════════════ -->
+  <section id="pricing" aria-labelledby="pricing-title">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Pricing</div>
+        <h2 class="section-title reveal reveal-delay-1" id="pricing-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          No hidden fees, no long-term lock-ins. Just straightforward pricing for great work.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Card 1: Build -->
+        <article class="glass-card pricing-card reveal">
+          <div class="pricing-plan">Website Build</div>
+          <div class="pricing-price">
+            <span class="pricing-price-amount">$500</span>
+            <span class="pricing-price-period">one time</span>
+          </div>
+          <p class="pricing-price-note">Starting from — final price depends on scope</p>
+
+          <div class="pricing-divider" aria-hidden="true"></div>
+
+          <ul class="pricing-features" aria-label="Features included">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom design tailored to your brand
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Fully mobile responsive
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Contact form &amp; Google Maps
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              SEO optimised from day one
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Launch ready in days
+            </li>
+          </ul>
+
+          <a href="#contact" class="btn btn-outline" style="width:100%">Get Your Free Demo</a>
+        </article>
+
+        <!-- Card 2: Hosting (featured) -->
+        <article class="glass-card pricing-card featured reveal reveal-delay-1">
+          <div class="pricing-badge" aria-label="Most popular plan">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Most Popular
+          </div>
+          <div class="pricing-plan">Hosting &amp; Maintenance</div>
+          <div class="pricing-price">
+            <span class="pricing-price-amount">$75</span>
+            <span class="pricing-price-period">/month</span>
+          </div>
+          <p class="pricing-price-note">Billed monthly — cancel any time</p>
+
+          <div class="pricing-divider" aria-hidden="true"></div>
+
+          <ul class="pricing-features" aria-label="Features included">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Professional managed hosting
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              SSL certificate included
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Monthly content updates
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Technical support &amp; security
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Complete peace of mind
+            </li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary" style="width:100%">Get Started</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       STATS / WHY
+  ═══════════════════════════════════════════════════════ -->
+  <section id="stats" aria-labelledby="stats-title">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label reveal">Why It Matters</div>
+        <h2 class="section-title reveal reveal-delay-1" id="stats-title">Your Customers Are<br>Searching Online</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          Every day without a professional website is a day you're invisible to customers actively searching for what you offer.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <!-- Stat 1 -->
+        <article class="glass-card stat-card reveal">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="stat-number" aria-label="81 percent">81%</div>
+          <p class="stat-label">of customers research a business online before visiting in person</p>
+        </article>
+
+        <!-- Stat 2 -->
+        <article class="glass-card stat-card reveal reveal-delay-1">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-number" aria-label="3 to 5">3–5</div>
+          <p class="stat-label">new customers per month the average local business gains from a professional website</p>
+        </article>
+
+        <!-- Stat 3 -->
+        <article class="glass-card stat-card reveal reveal-delay-2">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="stat-number" aria-label="18,000 dollars plus">$18K+</div>
+          <p class="stat-label">additional annual revenue a website typically unlocks for local Calgary businesses</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════════════════ -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal">Get in Touch</div>
+        <h2 class="section-title reveal reveal-delay-1" id="contact-title">Get Your Free Demo</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          We'll build a custom demo site for your business — completely free, no obligation. If you love it, it's yours.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Left: Info -->
+        <div class="reveal">
+          <h3 class="contact-info-title">Let's talk about your business</h3>
+          <p class="contact-info-desc">
+            Fill in the form and we'll be in touch within 24 hours. No sales pressure, no long-winded pitches — just a quick conversation about what your website could look like.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <div class="contact-detail-label">Email</div>
+                <div class="contact-detail-value">
+                  <a href="mailto:hello@chinookwebco.com">hello@chinookwebco.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <div class="contact-detail-label">Location</div>
+                <div class="contact-detail-value">Calgary, Alberta, Canada</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <div class="contact-detail-label">Response Time</div>
+                <div class="contact-detail-value">Within 24 hours</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="glass-card contact-form-card reveal reveal-delay-1">
+          <div id="form-success" class="form-success" role="alert" aria-live="polite">
+            <div class="form-success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h4>Request sent!</h4>
+            <p>Thanks — we'll be in touch within 24 hours to discuss your free demo.</p>
+          </div>
+
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/xnjoleaz"
+            method="POST"
+            novalidate
+            aria-label="Contact form"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="business-name">Business Name <span class="req" aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="business-name"
+                  name="business_name"
+                  class="form-input"
+                  placeholder="e.g. Calgary Auto Repair"
+                  required
+                  autocomplete="organization"
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="your-name">Your Name <span class="req" aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="your-name"
+                  name="name"
+                  class="form-input"
+                  placeholder="e.g. John Smith"
+                  required
+                  autocomplete="name"
+                  aria-required="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="you@example.com"
+                  required
+                  autocomplete="email"
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder="e.g. 403-555-0100"
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="business-type">Business Type <span class="req" aria-hidden="true">*</span></label>
+              <select id="business-type" name="business_type" class="form-select" required aria-required="true">
+                <option value="" disabled selected>Select your industry…</option>
+                <option value="restaurant">Restaurant / Café / Food</option>
+                <option value="trades">Trades (Plumber, Electrician, HVAC, etc.)</option>
+                <option value="salon">Salon / Spa / Beauty</option>
+                <option value="auto">Auto Shop / Detailing</option>
+                <option value="retail">Retail / Boutique</option>
+                <option value="health">Health / Fitness / Wellness</option>
+                <option value="professional">Professional Services</option>
+                <option value="contractor">Contractor / Construction</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                placeholder="Tell us a bit about your business and what you're looking for…"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-lg btn-submit">
+                <span class="btn-text">Request My Free Demo</span>
+                <span class="btn-spinner" aria-hidden="true"><span class="spinner"></span></span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer id="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand col -->
+        <div class="footer-brand">
+          <a href="#" class="footer-brand-logo" aria-label="Chinook Web Co. Home">
+            <div class="nav-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+            <span class="footer-brand-name">Chinook <span>Web Co.</span></span>
+          </a>
+          <p class="footer-tagline">Professional websites for Calgary's local businesses. We handle everything — design, hosting, and maintenance.</p>
+          <div class="footer-social" aria-label="Social links">
+            <!-- Instagram -->
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <ul class="footer-links" role="list">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#stats">Why a Website?</a></li>
+            <li><a href="#contact">Get a Demo</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-contact-list" role="list">
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:hello@chinookwebco.com">hello@chinookwebco.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Calgary, Alberta, Canada
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">&copy; 2026 Chinook Web Co. All rights reserved.</p>
+        <p class="footer-bottom-heart">Built with <span aria-label="love">❤️</span> in Calgary, Alberta</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+    'use strict';
+
+    /* ── Navbar scroll effect ─────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    let lastY = 0;
+    function handleScroll() {
+      const y = window.scrollY;
+      if (y > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      lastY = y;
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    /* ── Mobile menu ──────────────────────────────────────── */
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('nav-mobile-menu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.contains('open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        hamburger.classList.add('open');
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    /* ── Scroll reveal ────────────────────────────────────── */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    /* ── Hero Canvas Particles ────────────────────────────── */
+    (function initParticles() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Skip heavy animation on reduced motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let W, H, particles, animFrame;
+      const PARTICLE_COUNT = 70;
+      const CONNECT_DIST   = 140;
+      const MAX_SPEED      = 0.35;
+      const ACCENT_RGB     = '59, 130, 246';
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      function createParticle() {
+        return {
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * MAX_SPEED,
+          vy: (Math.random() - 0.5) * MAX_SPEED,
+          r:  Math.random() * 1.5 + 0.5,
+          a:  Math.random() * 0.5 + 0.15,
+        };
+      }
+
+      function init() {
+        resize();
+        particles = Array.from({ length: PARTICLE_COUNT }, createParticle);
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Update & draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Bounce
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${ACCENT_RGB}, ${p.a})`;
+          ctx.fill();
+        }
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < CONNECT_DIST) {
+              const alpha = (1 - dist / CONNECT_DIST) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(${ACCENT_RGB}, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animFrame = requestAnimationFrame(tick);
+      }
+
+      init();
+      tick();
+
+      const ro = new ResizeObserver(() => {
+        resize();
+      });
+      ro.observe(canvas.parentElement);
+    }());
+
+    /* ── Contact form ─────────────────────────────────────── */
+    const form       = document.getElementById('contact-form');
+    const submitBtn  = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        const requiredFields = form.querySelectorAll('[required]');
+        let valid = true;
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            valid = false;
+            field.style.borderColor = 'rgba(239,68,68,0.6)';
+            field.addEventListener('input', () => {
+              field.style.borderColor = '';
+            }, { once: true });
+          }
+        });
+        if (!valid) {
+          const first = form.querySelector('[required]:invalid, [required][style*="rgb"]');
+          if (first) first.focus();
+          return;
+        }
+
+        // Loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+
+        try {
+          const data = new FormData(form);
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' },
+          });
+
+          if (res.ok) {
+            form.style.display = 'none';
+            successMsg.classList.add('visible');
+          } else {
+            throw new Error('Server error');
+          }
+        } catch (err) {
+          submitBtn.classList.remove('loading');
+          submitBtn.disabled = false;
+          // Fallback: show a simple error
+          const errMsg = document.createElement('p');
+          errMsg.style.cssText = 'color:rgba(239,68,68,0.9);font-size:0.85rem;margin-top:12px;text-align:center;';
+          errMsg.textContent = 'Something went wrong. Please email us directly at hello@chinookwebco.com';
+          form.appendChild(errMsg);
+          setTimeout(() => errMsg.remove(), 6000);
+        }
+      });
+    }
+
+    /* ── Active nav link on scroll ────────────────────────── */
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.style.color = '';
+          });
+          const id = entry.target.id;
+          const active = document.querySelector(`.nav-links a[href="#${id}"]`);
+          if (active) active.style.color = 'var(--accent-light)';
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+</html>
