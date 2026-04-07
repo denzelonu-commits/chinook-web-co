@@ -11,7 +11,12 @@
       "Bash(command -v python3)",
       "Read(//opt/homebrew/lib/node_modules/npm/bin/**)",
       "Bash(/opt/homebrew/bin/npx --version)",
-      "Bash(/opt/homebrew/bin/node --version)"
+      "Bash(/opt/homebrew/bin/node --version)",
+      "Bash(python3 -c \"from PIL import Image, ImageDraw; print\\(''PIL OK''\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''PIL OK'', Image.__version__\\)\")",
+      "Bash(python3 generate_icons.py)",
+      "Bash(git -C /Users/denzelonuoha/chinook-web-co add .)"
     ]
   }
 }

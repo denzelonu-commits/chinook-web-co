@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Chinook Web Co. — Professional websites for Calgary's local businesses. Custom design, hosting included, completely hands-off for you." />
   <title>Chinook Web Co. | Calgary Web Design Agency</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -264,21 +267,18 @@
     .nav-logo-mark {
       width: 36px;
       height: 36px;
-      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      background: #0a0a0a;
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 16px rgba(59,130,246,0.4);
+      box-shadow: 0 0 16px rgba(59,130,246,0.35);
+      border: 1px solid rgba(59,130,246,0.2);
+      overflow: hidden;
     }
     .nav-logo-mark svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 36px;
+      height: 36px;
     }
     .nav-logo-text {
       font-size: 1.05rem;
@@ -1328,9 +1328,20 @@
         <!-- Logo -->
         <a href="#" class="nav-logo" aria-label="Chinook Web Co. Home">
           <div class="nav-logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <polyline points="4 17 10 11 4 5"></polyline>
-              <line x1="12" y1="19" x2="20" y2="19"></line>
+            <svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navMtnG" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%"   stop-color="#93c5fd"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="navArcG" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%"   stop-color="#0891b2"/>
+                  <stop offset="50%"  stop-color="#22d3ee"/>
+                  <stop offset="100%" stop-color="#0891b2"/>
+                </linearGradient>
+              </defs>
+              <polygon points="5,57 14,19 24,37 32,23 40,37 50,19 59,57" fill="url(#navMtnG)" opacity="0.95"/>
+              <path d="M 5 43 C 5 4, 59 4, 59 43" stroke="url(#navArcG)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
             </svg>
           </div>
           <span class="nav-logo-text">Chinook <span>Web Co.</span></span>
@@ -1840,10 +1851,20 @@
         <div class="footer-brand">
           <a href="#" class="footer-brand-logo" aria-label="Chinook Web Co. Home">
             <div class="nav-logo-mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="4 17 10 11 4 5"></polyline>
-                <line x1="12" y1="19" x2="20" y2="19"></line>
-              </svg>
+            <svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ftArcG" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#1d4ed8"/>
+                  <stop offset="100%" stop-color="#60a5fa"/>
+                </linearGradient>
+                <linearGradient id="ftPeakG" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#93c5fd"/>
+                </linearGradient>
+              </defs>
+              <polygon points="32,22 48,52 16,52" fill="url(#ftPeakG)" opacity="0.95"/>
+              <path d="M 7 46 C 7 14, 57 14, 57 46" stroke="url(#ftArcG)" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            </svg>
             </div>
             <span class="footer-brand-name">Chinook <span>Web Co.</span></span>
           </a>
